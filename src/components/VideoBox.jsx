@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../../utils/constants.js";
+import { useSelector } from "react-redux";
+import API_KEY from "../../utils/constants.js";
 import VideoCard from "./VideoCard.jsx";
 import { Link } from "react-router-dom";
 
 const VideoBox = () => {
   const [videos, setVideos] = useState([]);
-  console.log(videos);
+  const category = useSelector((state) => state.category.category);
 
   useEffect(() => {
     const getVideos = async () => {
-      const data = await fetch(YOUTUBE_VIDEOS_API);
+      const data = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=ES&videoCategoryId=${category}&key=${API_KEY}`,
+      );
       const json = await data.json();
-      setVideos(json.items);
+      setVideos(json.items || []);
     };
 
     getVideos();
-  }, []);
+  }, [category]);
 
   return (
-    <div className="flex flex-wrap">
-      {videos.length > 0 &&
-        videos.map((video) => (
-          <Link to={`/watch?v=${video.id}`}>
-            <VideoCard key={video.id} info={video} />
-          </Link>
-        ))}
+    <div className="responsive-box">
+      {videos.map((video) => (
+        <Link key={video.id} to={`/watch/${video.id}`} state={{ video }}>
+          <VideoCard info={video} />
+        </Link>
+      ))}
     </div>
   );
 };

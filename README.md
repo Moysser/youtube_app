@@ -1,12 +1,6 @@
 # YouTube Clone App
 
-A modern and responsive YouTube-like video streaming application built with React and styled using Tailwind CSS. This project demonstrates how to implement features such as:
-
-- Video search and display
-
-- Responsive design for various screen sizes
-
-- Reusable components for UI consistency
+A modern and responsive YouTube-like video streaming application built with React and styled using Tailwind CSS.
 
 ## tech & tools
 
@@ -22,8 +16,6 @@ A modern and responsive YouTube-like video streaming application built with Reac
 
 - Search functionality
 
-- Responsive design
+- Responsive design for various screen sizes
 
 - Video playback
-
-- User interaction (likes, comments)

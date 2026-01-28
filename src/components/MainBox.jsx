@@ -1,13 +1,11 @@
-import ButtonList from "./ButtonList";
 import VideoBox from "./VideoBox";
 
-const MainContainer = () => {
+const mainBox = () => {
   return (
-    <div className="">
-      <ButtonList />
+    <div>
       <VideoBox />
     </div>
   );
 };
 
-export default MainContainer;
+export default mainBox;
